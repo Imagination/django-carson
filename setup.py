@@ -15,6 +15,8 @@ setup(
         "oauth2==1.5.170",
         "requests==0.6.1",
     ],
+    zip_safe = False,
+	
     classifiers      = [
         "Development Status :: 4 - Beta",
         "Framework :: Django",

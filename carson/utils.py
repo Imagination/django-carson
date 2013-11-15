@@ -67,7 +67,7 @@ def twitter_api_call(method, body):
     Call the given Twitter REST API method with a body.
     """
     assert method.endswith(".json"), "It's 2011, use JSON"
-    url = "https://api.twitter.com/1/" + method
+    url = "https://api.twitter.com/1.1/" + method
     data = generate_signed_request(url, body)
     headers = {"Content-Type": "application/x-www-form-urlencoded"}
     response = requests.post(url, data=data, headers=headers)

@@ -1,4 +1,4 @@
-import sys
+import sys, socket
 import pytz
 import json
 import urllib
@@ -7,6 +7,8 @@ from datetime import datetime
 from django.conf import settings
 from carson.utils import (
     generate_signed_request, get_credentials, write_update, http_debug)
+
+socket.setdefaulttimeout(120)
 
 class Streamer(object):
     def __init__(self):

@@ -12,11 +12,11 @@ class Command(BaseCommand):
     help = "Consume twitter updates"
 
     def handle(self, *args, **kwargs):
-        accounts = Account.objects.all()
-        tags = Tag.objects.all()
+        accounts = Account.objects.filter(active = True)
+        tags = Tag.objects.filter(active = True)
 
         # Alert when an Account doesn't have its twitter_id set
-        empty_ids = accounts.filter(twitter_id=None)
+        empty_ids = accounts.filter(twitter_id=None, active = True)
         if empty_ids:
             sys.stderr.write("Missing Twitter IDs for:\n")
             for account in empty_ids:

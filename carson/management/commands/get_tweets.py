@@ -22,8 +22,9 @@ class Command(BaseCommand):
             for account in empty_ids:
                 sys.stderr.write("\t- %s\n" % account.twitter_username)
             sys.stderr.write("Run ./manage.py lookup_twitter_ids or select \"Lookup Twitter IDs\" in the admin.\n")
-            raise SystemExit
 
+	# Get all accounts again - with non-null twitter_ids
+        accounts = Account.objects.filter(active = True).exclude(twitter_id__isnull = True)
         follow = ",".join(map(str, accounts.values_list('twitter_id', flat=True)))
         track = ",".join(tags.values_list('name', flat=True))
 

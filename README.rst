@@ -1,6 +1,25 @@
 =============
-django-carson
+django-carson fork
 =============
+
+This is a fork of the django-carson project with the following
+enhancements:
+
+* Update Twitter API version to 1.1
+
+* Make feed process more robust against network failures and hangs.
+
+* Add 'active' status to Account and Tag so they can be disabled
+  without deleteing all  related Tweets.
+
+* Handle v1.1  404 response when looking up user display names
+
+* get_tweets doesn't treat missing twitter_ids as fatal.
+
+
+The original README continues below...
+
+
 
 django-carson makes it easy to store and display tweets from a set of
 users or tweets about a given topic.

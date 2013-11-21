@@ -23,7 +23,8 @@ class Streamer(object):
         while True:
             try:
                 c = self.response.read(1)
-            except httplib.HTTPException:
+            except httplib.HTTPException, e:
+		sys.stderr.write('xxx %s', e)
                 continue
             except KeyboardInterrupt:
                 sys.stderr.write("\nExiting...\n")
@@ -32,6 +33,11 @@ class Streamer(object):
             if c == '\n':
                 break
             else:
+		if not c:
+		    sys.stderr.write('EOF on stream')
+		    raise SystemExit
+		    raise SystemExit
+		    
                 buf += c
 
         buf = buf.strip()

@@ -36,7 +36,6 @@ class Streamer(object):
 		if not c:
 		    sys.stderr.write('EOF on stream')
 		    raise SystemExit
-		    raise SystemExit
 		    
                 buf += c
 

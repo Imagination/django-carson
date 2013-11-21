@@ -2,7 +2,7 @@ import sys
 import pytz
 import json
 import time
-import urllib
+import urllib, urllib2
 import pprint
 import locale
 import httplib
@@ -94,7 +94,15 @@ def lookup_twitter_ids(queryset, username_field="twitter_username"):
         screen_name = ",".join(usernames),
         include_entities = 0,
     )
-    response = twitter_api_call("/users/lookup.json", body)
+    try:
+	response = twitter_api_call("/users/lookup.json", body)
+    except urllib2.HTTPError, e:
+	# v1.1 If no screen names were resolved, then a 404 is returned.
+	if e.code == 404:
+	    return 0
+	raise
+
+    
     return queryset.model.attach_twitter_ids(response)
 
 def parse_created_at(created_at):

@@ -10,8 +10,8 @@ from carson.json_field import JSONField
 class Account(models.Model):
     twitter_username = models.CharField("Username", help_text="Minus the '@' sign", max_length=32)
     twitter_id = models.PositiveIntegerField("Twitter ID", editable=False, null=True)
-    active = models.BooleanField(default = True, help_text = 'Deactivated accounts  are ignored without deleting existing tweets'
-)    
+    active = models.BooleanField(default = True)
+
 
     def __unicode__(self):
         return u"@%s" % self.twitter_username

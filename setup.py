@@ -13,7 +13,7 @@ setup(
     install_requires = [
         "pytz==2011h",
         "oauth2==1.5.170",
-        "requests==0.6.1",
+        "requests",
     ],
     zip_safe = False,
 	
